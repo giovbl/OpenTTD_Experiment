@@ -1,0 +1,26 @@
+Rather than the original game, this version has some changes:
+
+   - less limitations for orders:
+       -stations can serve also vehicles of different companies
+       -Railways can serve all companies vehicles (a rail tile can be modified only by the owner, so the owner can modify it in a way that other companies can use it's rail track)
+
+   - less limitations for station construction:
+              -multiple company can build tiles for the same station
+              -a company can rebuild the station created by another company 
+
+
+known bugs:
+
+     -problems with train pathfinding on guest rail tracks 
+      temporary solution : partially fixable with signals
+      UPDATE: fixed modifying signal behavior
+
+
+     -no kind of collisions between two trains of different companies
+      UPDATE: fixed changing train collision behavior
+
+     -pathfinding fails without signals on railways 
+
+not tested:
+
+      -boats on handling different companies harbors

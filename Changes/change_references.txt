@@ -1,0 +1,146 @@
+aircraft_cmd.cpp:   line(s) 1603
+
+
+1603
+if (CanVehicleUseStation(v, st) /*&& (st->owner == OWNER_NONE || st->owner == v->owner)*/ && !(st->airport.flags & AIRPORT_CLOSED_block))
+
+
+
+ roadveh_cmd.cpp:    line(s) 899,1406,1439
+
+
+ 899
+ if (/*!IsTileOwner(tile, v->owner) || */ GetRoadStopDir(tile) == enterdir || v->HasArticulatedPart())
+
+ 1406
+ /*v->owner == GetTileOwner(v->tile) &&*/ !v->current_order.IsType(OT_LEAVESTATION) &&
+
+ 1439
+ /*v->owner == GetTileOwner(v->tile) &&*/
+
+
+
+
+    ship_cmd.cpp:    line(s) 159
+
+    159
+    if (IsShipDepotTile(tile) /*&& IsTileOwner(tile, v->owner)*/)
+
+
+
+
+      signal.cpp:    line(s) 283,358,368,376
+
+
+      283
+      /*if (GetTileOwner(tile) != owner) continue; // do not propagate signals on others' tiles (remove for tracksharing)*/
+
+      358      MP_STATION
+      //if (GetTileOwner(tile) != owner) continue;
+
+
+      368     MP_ROAD
+      //if (GetTileOwner(tile) != owner) continue;
+
+
+
+ station_cmd.cpp:    line(s) 110,366,678,2455
+
+
+ 110
+ //if (!T::IsValidID(t) || Station::Get(t)->owner != company) continue;
+
+ 366
+ if (!st->IsInUse() /*&& st->owner == _current_company*/)
+
+ 678
+ /*if ((*st)->owner != _current_company) {
+			return_cmd_error(CMD_ERROR);
+		}*/
+
+2455
+//if ((v->owner == company) == include_company)
+
+
+
+   train_cmd.cpp:    line(s) 2847,3000
+
+
+2847
+return /*IsTileOwner(tile, v->owner) &&*/
+
+
+3000
+/*if (v->owner != tcc->v->owner) return NULL;*/
+
+
+
+   order_cmd.cpp:    line(s) 748,797,798,808,809,846,847,854,855
+
+
+748
+            /*
+			if (st->owner != OWNER_NONE) {
+				CommandCost ret = CheckOwnership(st->owner);
+				if (ret.Failed()) return ret;
+			}
+            */
+
+
+797-798            VEH_TRAIN
+//CommandCost ret = CheckOwnership(st->owner);
+					//if (ret.Failed()) return ret;
+
+
+808-809                after: if (dp == NULL) return CMD_ERROR; before: switch (v->type)
+//CommandCost ret = CheckOwnership(GetTileOwner(dp->xy));
+					//if (ret.Failed()) return ret;
+
+
+
+846-847            VEH_TRAIN
+//CommandCost ret = CheckOwnership(wp->owner);
+					//if (ret.Failed()) return ret;
+
+854-855            VEH_SHIP
+//CommandCost ret = CheckOwnership(wp->owner);
+					//if (ret.Failed()) return ret;
+
+
+
+   order_gui.cpp:    line(s) 367,380,396,1426
+
+
+367
+if (IsDepotTypeTile(tile, (TransportType)(uint)v->type) /*&& IsTileOwner(tile, _local_company)*/)
+
+
+380
+v->type == VEH_TRAIN /*&&
+			IsTileOwner(tile, _local_company)*/)
+
+
+396     MP_STATION GetOrderCmdFromTile(...)
+//if (st->owner == _local_company || st->owner == OWNER_NONE)
+    .......
+    //}
+
+
+1426  OnHotKey()
+//if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
+
+
+
+        follow_track.hpp:    line(s) 342   (./pathfinder/)
+
+
+342
+/*
+		// rail transport is possible only on tiles with the same owner as vehicle
+		if (IsRailTT() && GetTileOwner(m_new_tile) != m_veh_owner) {
+			// different owner
+			m_err = EC_NO_WAY;
+			return false;
+		}
+        */
+
